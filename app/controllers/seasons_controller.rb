@@ -4,15 +4,20 @@ class SeasonsController < ApplicationController
     def index
         seasons = Season.all 
 
-        render json: seasons.to_json(:include => { :games })
+        render json: seasons
     end 
+
+    def show
+        season = Season.find(params[:id])
+        render json: season
+    end
 
     def create
         season = Season.create(season_params)
         season.update(user: @current_user)
 
         if season.valid? 
-            render json: season, include: [:games]
+            render json: season
         else
             render json: { errors: season.errors.full_messages }, status: 403
         end
