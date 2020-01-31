@@ -2,13 +2,21 @@ class GamesController < ApplicationController
     before_action :protected_action
 
     def index
+        games = Game.all
+
+        render json: games
     end 
+
+    def show
+        game = Game.find(params[:id])
+        render json: game
+    end
 
     def create
         game = Game.new(game_params)
 
         if game.save
-            render json: game.to_json(:include => { :map, :hero })
+            render json: game
         else
             render json: { errors: game.errors.full_messages }, status: 403
         end
