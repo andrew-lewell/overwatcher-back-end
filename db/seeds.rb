@@ -66,63 +66,64 @@ testUser = User.create({ username: "testUser", email: "test@user.com", password:
 testSeason = Season.create({ season: "20", user_id: testUser.id })
 
 7.times do 
-    result = ["Win", "Loss"]
+    result = ["win", "loss"]
     sr = [2976, 3001, 3024, 3048]
-    map_pool = [2, 3, 4, 5, 9, 11, 14, 15, 17, 19, 20]
+    m = [2, 3, 4, 5, 9, 11, 14, 15, 17, 19, 20]
     Game.create({
         result: result.sample,
         sr: sr.sample,
         season_id: testSeason.id,
-        map_id: map_pool.sample,
+        map_id: m.sample,
         hero_id: Hero.all.sample.id
     })
 end
 
 1.times do 
     sr = [2976, 3001, 3024, 3048]
-    map_pool = [2, 3, 4, 5, 9, 11, 14, 15, 17, 19, 20]
+    m = [2, 3, 4, 5, 9, 11, 14, 15, 17, 19, 20]
     Game.create({
-        result: "Draw",
+        result: "draw",
         sr: sr.sample,
         season_id: testSeason.id,
-        map_id: map_pool.sample,
+        map_id: m.sample,
         hero_id: Hero.all.sample.id
     })
 end
 
 5.times do 
-    result = ["Win", "Loss"]
+    result = ["win", "loss"]
     sr = [2976, 3001, 3024, 3048]
-    map_pool = [2, 3, 4, 5, 9, 11, 14, 15, 17, 19, 20]
+    m = [2, 3, 4, 5, 9, 11, 14, 15, 17, 19, 20]
     Game.create({
         result: result.sample,
         sr: sr.sample,
         season_id: testSeason.id,
-        map_id: map_pool.sample,
+        map_id: m.sample,
         hero_id: Hero.all.sample.id
     })
 end
 
 1.times do 
     sr = [2976, 3001, 3024, 3048]
+    m = [2, 3, 4, 5, 9, 11, 14, 15, 17, 19, 20]
     Game.create({
-        result: "Draw",
+        result: "draw",
         sr: sr.sample,
         season_id: testSeason.id,
-        map_id: map_pool.sample,
+        map_id: m.sample,
         hero_id: Hero.all.sample.id
     })
 end
 
 15.times do 
-    result = ["Win", "Loss"]
+    result = ["win", "loss"]
     sr = [2976, 3001, 3024, 3048]
-    map_pool = [2, 3, 4, 5, 9, 11, 14, 15, 17, 19, 20]
+    m = [2, 3, 4, 5, 9, 11, 14, 15, 17, 19, 20]
     Game.create({
         result: result.sample,
         sr: sr.sample,
         season_id: testSeason.id,
-        map_id: map_pool.sample,
+        map_id: m.sample,
         hero_id: Hero.all.sample.id
     })
 end

@@ -24,7 +24,13 @@ class GamesController < ApplicationController
 
     def update
         game = Game.find(params[:id])
-        game.update(game_params)
+
+        if game
+            game.update(game_params)
+            render json: game
+        else 
+            render json: { errors: game.errors.full_messages }, status: 403
+        end
     end 
 
     def destroy
