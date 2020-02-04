@@ -65,7 +65,7 @@ Hero.create([{ name: "Ana", role: "support" }, #1
 testUser = User.create({ username: "testUser", email: "test@user.com", password: "123" })
 testSeason = Season.create({ season: "20", user_id: testUser.id })
 
-7.times do 
+470.times do 
     result = ["win", "loss"]
     sr = [2976, 3001, 3024, 3048]
     m = [2, 3, 4, 5, 9, 11, 14, 15, 17, 19, 20]
@@ -78,7 +78,7 @@ testSeason = Season.create({ season: "20", user_id: testUser.id })
     })
 end
 
-1.times do 
+30.times do 
     sr = [2976, 3001, 3024, 3048]
     m = [2, 3, 4, 5, 9, 11, 14, 15, 17, 19, 20]
     Game.create({
@@ -90,43 +90,43 @@ end
     })
 end
 
-5.times do 
-    result = ["win", "loss"]
-    sr = [2976, 3001, 3024, 3048]
-    m = [2, 3, 4, 5, 9, 11, 14, 15, 17, 19, 20]
-    Game.create({
-        result: result.sample,
-        sr: sr.sample,
-        season_id: testSeason.id,
-        map_id: m.sample,
-        hero_id: Hero.all.sample.id
-    })
-end
+# 5.times do 
+#     result = ["win", "loss"]
+#     sr = [2976, 3001, 3024, 3048]
+#     m = [2, 3, 4, 5, 9, 11, 14, 15, 17, 19, 20]
+#     Game.create({
+#         result: result.sample,
+#         sr: sr.sample,
+#         season_id: testSeason.id,
+#         map_id: m.sample,
+#         hero_id: Hero.all.sample.id
+#     })
+# end
 
-1.times do 
-    sr = [2976, 3001, 3024, 3048]
-    m = [2, 3, 4, 5, 9, 11, 14, 15, 17, 19, 20]
-    Game.create({
-        result: "draw",
-        sr: sr.sample,
-        season_id: testSeason.id,
-        map_id: m.sample,
-        hero_id: Hero.all.sample.id
-    })
-end
+# 1.times do 
+#     sr = [2976, 3001, 3024, 3048]
+#     m = [2, 3, 4, 5, 9, 11, 14, 15, 17, 19, 20]
+#     Game.create({
+#         result: "draw",
+#         sr: sr.sample,
+#         season_id: testSeason.id,
+#         map_id: m.sample,
+#         hero_id: Hero.all.sample.id
+#     })
+# end
 
-15.times do 
-    result = ["win", "loss"]
-    sr = [2976, 3001, 3024, 3048]
-    m = [2, 3, 4, 5, 9, 11, 14, 15, 17, 19, 20]
-    Game.create({
-        result: result.sample,
-        sr: sr.sample,
-        season_id: testSeason.id,
-        map_id: m.sample,
-        hero_id: Hero.all.sample.id
-    })
-end
+# 15.times do 
+#     result = ["win", "loss"]
+#     sr = [2976, 3001, 3024, 3048]
+#     m = [2, 3, 4, 5, 9, 11, 14, 15, 17, 19, 20]
+#     Game.create({
+#         result: result.sample,
+#         sr: sr.sample,
+#         season_id: testSeason.id,
+#         map_id: m.sample,
+#         hero_id: Hero.all.sample.id
+#     })
+# end
 
 
 
