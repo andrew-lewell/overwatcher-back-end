@@ -1,5 +1,5 @@
 class MapsController < ApplicationController
-    # before_action :protected_action
+    before_action :protected_action
 
     def index 
         maps = Map.all 
@@ -24,6 +24,8 @@ class MapsController < ApplicationController
             ROUND(COUNT(case g.result when 'draw' then 1 else null end) * 100.0 / COUNT(g.result), 2) as draw_perc
             from maps m 
             inner join games g on g.map_id = m.id
+            inner join seasons s on s.id = g.season_id
+            where s.user_id = #{@current_user.id}
             group by m.map
             order by win_perc desc")
 
@@ -46,6 +48,8 @@ class MapsController < ApplicationController
             ROUND(COUNT(case g.result when 'draw' then 1 else null end) * 100.0 / COUNT(g.result), 2) as draw_perc
             from maps m 
             inner join games g on g.map_id = m.id
+            inner join seasons s on s.id = g.season_id
+            where s.user_id = #{@current_user.id}
             group by m.map_type
             order by win_perc desc")
 

@@ -1,10 +1,11 @@
 class SeasonsController < ApplicationController
-    before_action :protected_action, except: :index
+    before_action :protected_action
 
     def index
-        seasons = Season.all 
+        # byebug
+        seasons_ids = @current_user.seasons.select(:id)
 
-        render json: seasons
+        render json: seasons_ids.to_json
     end 
 
     def show
@@ -13,10 +14,11 @@ class SeasonsController < ApplicationController
     end
 
     def create
-        season = Season.create(season_params)
-        season.update(user: @current_user)
+        season = Season.new
+        season.season = params[:season]
+        season.user = @current_user
 
-        if season.valid? 
+        if season.save
             render json: season
         else
             render json: { errors: season.errors.full_messages }, status: 403
@@ -29,7 +31,7 @@ class SeasonsController < ApplicationController
     # def destroy
     # end 
 
-    private 
+    # private 
 
     def season_params
         params.require(:season).permit(:season, :user_id)
