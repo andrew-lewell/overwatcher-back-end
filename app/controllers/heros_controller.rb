@@ -1,5 +1,5 @@
 class HerosController < ApplicationController
-    # before_action :protected_action
+    before_action :protected_action
 
     def index 
         heros = Hero.all 
@@ -26,6 +26,8 @@ class HerosController < ApplicationController
             ROUND(COUNT(case g.result when 'draw' then 1 else null end) * 100.0 / COUNT(g.result), 2) as draw_perc
             from heros h 
             inner join games g on g.hero_id = h.id
+            inner join seasons s on s.id = g.season_id
+            where s.user_id = #{@current_user.id}
             group by h.name, h.id, h.role
             order by win_perc desc")
 
@@ -48,6 +50,8 @@ class HerosController < ApplicationController
             ROUND(COUNT(case g.result when 'draw' then 1 else null end) * 100.0 / COUNT(g.result), 2) as draw_perc
             from heros h 
             inner join games g on g.hero_id = h.id
+            inner join seasons s on s.id = g.season_id
+            where s.user_id = #{@current_user.id}
             group by h.role
             order by h.role")
 
