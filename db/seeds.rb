@@ -65,7 +65,7 @@ Hero.create([{ name: "Ana", role: "support" }, #1
 testUser = User.create({ username: "Andy", email: "al@flatiron.com", password: "123456" })
 testSeason = Season.create({ season: "20", user_id: testUser.id })
 
-180.times do 
+900.times do 
     result = ["win", "loss"]
     sr = [2976, 3001, 3024, 3048]
     m = [2, 3, 4, 5, 9, 11, 14, 15, 17, 19, 20]
@@ -78,7 +78,7 @@ testSeason = Season.create({ season: "20", user_id: testUser.id })
     })
 end
 
-20.times do 
+100.times do 
     sr = [2976, 3001, 3024, 3048]
     m = [2, 3, 4, 5, 9, 11, 14, 15, 17, 19, 20]
     Game.create({

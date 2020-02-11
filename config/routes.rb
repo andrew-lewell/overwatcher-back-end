@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/winpercbyrole', to: "heros#winpercbyrole"
   get '/winpercbymap', to: "maps#winpercbymap"
   get '/winpercbymaptype', to: "maps#winpercbymaptype"
+  get '/herostatsformapid/:id', to: "heros#herostatsformapid"
 
   resources :seasons
   resources :games
