@@ -53,7 +53,7 @@ class HerosController < ApplicationController
             inner join seasons s on s.id = g.season_id
             where s.user_id = #{@current_user.id}
             group by h.role
-            order by h.role")
+            order by win_perc desc")
 
         if heros 
             render json: heros 
@@ -62,7 +62,7 @@ class HerosController < ApplicationController
         end
     end
 
-    def herostatsbymap(map_id)
+    def herostatsformapid
         heros = Hero.find_by_sql("select 
             h.id,
             h.name,
@@ -76,8 +76,9 @@ class HerosController < ApplicationController
             COUNT(case g.result when 'draw' then 1 else null end) * 100.0 / COUNT(g.result) as draw_perc
             from heros h 
             inner join games g on g.hero_id = h.id
-            where g.map_id = #{map_id}
-            group by h.name, h.id, h.role")
+            where g.map_id = #{params[:id]}
+            group by h.name, h.id, h.role
+            order by win_perc desc")
 
         if heros 
             render json: heros 
