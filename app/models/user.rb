@@ -6,6 +6,7 @@ class User < ApplicationRecord
     validates :username, :email, uniqueness: true
     validates :username, length: { minimum: 3 }
     validates :password, length: { in: 6..20 }
+    validates :username, format: { with: /\A[a-zA-Z0-9]+\Z/ }
 
     def token
         JWT.encode({ user_id: self.id }, ENV['SECRET'])
