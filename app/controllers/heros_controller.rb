@@ -76,7 +76,9 @@ class HerosController < ApplicationController
             COUNT(case g.result when 'draw' then 1 else null end) * 100.0 / COUNT(g.result) as draw_perc
             from heros h 
             inner join games g on g.hero_id = h.id
+            inner join seasons s on s.id = g.season_id
             where g.map_id = #{params[:id]}
+            and s.user_id = #{@current_user.id}
             group by h.name, h.id, h.role
             order by win_perc desc")
 
